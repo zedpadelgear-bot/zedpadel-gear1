@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop All | ZEDPADEL GEAR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="preorder-banner">⚠️ ALL PRODUCTS ARE PRE-ORDER ONLY</div>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">ZEDPADEL <span>GEAR</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <div class="cart-icon" onclick="window.location.href='cart.html'" style="cursor: pointer;">
+                    🛒 <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <div class="mobile-menu" id="mobileMenu">☰</div>
+            </div>
+        </nav>
+    </header>
+
+    <main style="margin-top: 140px;">
+        <section class="section" style="padding-bottom: 1rem;">
+            <h1 class="section-title">Shop All Products</h1>
+            
+            <div class="search-box" style="max-width: 600px; margin: 0 auto 2rem;">
+                <span>🔍</span>
+                <input type="text" id="searchInput" placeholder="Search rackets (e.g., 'NOX', 'Babolat', 'Vertuo')...">
+            </div>
+        </section>
+
+        <div class="shop-layout">
+            <aside class="filter-sidebar">
+                <h3>⚙️ Filter Products</h3>
+                
+                <div class="filter-block">
+                    <label>🏷️ Brand</label>
+                    <select id="brandFilter">
+                        <option value="all">All Brands</option>
+                        <option value="NOX">NOX (7)</option>
+                        <option value="Adidas">Adidas (10)</option>
+                        <option value="Babolat">Babolat (7)</option>
+                    </select>
+                </div>
+                
+                <div class="filter-block">
+                    <label>💰 Price Range</label>
+                    <select id="priceFilter">
+                        <option value="all">All Prices</option>
+                        <option value="0-5000">Under ZMW 5,000</option>
+                        <option value="5000-7000">ZMW 5,000 - 7,000</option>
+                        <option value="7000+">Above ZMW 7,000</option>
+                    </select>
+                </div>
+                
+                <div class="filter-block">
+                    <label>📊 Sort By</label>
+                    <select id="sortFilter">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">💵 Price: Low to High</option>
+                        <option value="price-high">💰 Price: High to Low</option>
+                    </select>
+                </div>
+                
+                <button class="reset-btn" onclick="filterSystem.resetFilters()">🔄 Reset All</button>
+            </aside>
+
+            <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <span style="color: var(--text-gray);">Showing <strong id="resultCount">0</strong> products</span>
+                </div>
+                
+                <div class="products-grid" id="shopGrid">
+                    <!-- Products loaded via JS -->
+                </div>
+                
+                <div id="noResults" style="display: none; text-align: center; padding: 3rem;">
+                    <h3>No products found 😕</h3>
+                    <p>Try different filters or search terms</p>
+                    <button class="btn btn-primary" onclick="filterSystem.resetFilters()">Reset Filters</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ZEDPADEL GEAR</h3>
+                <p>WhatsApp: +260 775 543295</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ZEDPADEL GEAR. Pre-Order Only Store.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/260775543295" class="whatsapp-float" target="_blank">💬</a>
+
+    <script src="js/products-nox.js"></script>
+    <script src="js/products-adidas.js"></script>
+    <script src="js/products-babolat.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

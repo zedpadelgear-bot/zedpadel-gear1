@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZEDPADEL GEAR | Premium Padel Equipment Zambia</title>
+    <meta name="description" content="Zambia's premier padel sports equipment store. Pre-order premium rackets from NOX, Adidas & Babolat. Cash on Delivery & Mobile Money accepted.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="preorder-banner">
+        ⚠️ IMPORTANT: ALL PRODUCTS ARE PRE-ORDER ONLY | Delivery within 14-21 days
+    </div>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">ZEDPADEL <span>GEAR</span></a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop All</a></li>
+                <li class="dropdown">
+                    <a href="categories.html">Categories ▾</a>
+                    <div class="dropdown-content">
+                        <a href="rackets.html">Padel Rackets</a>
+                        <a href="balls.html">Padel Balls</a>
+                        <a href="bags.html">Bags & Backpacks</a>
+                        <a href="accessories.html">Accessories</a>
+                    </div>
+                </li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <div class="nav-icons">
+                <div class="cart-icon" onclick="window.location.href='cart.html'" style="cursor: pointer;">
+                    🛒
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <div class="mobile-menu" id="mobileMenu">☰</div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="hero-badge">🇿🇲 Zambia's #1 Padel Store</span>
+                    <h1>Pre-Order Premium Padel Gear in Zambia</h1>
+                    <p>Professional-grade padel rackets from NOX, Adidas & Babolat. Trusted by players across Lusaka. Cash on Delivery available.</p>
+                    
+                    <div class="hero-buttons">
+                        <a href="shop.html" class="btn btn-primary">Shop Now</a>
+                        <a href="rackets.html" class="btn btn-secondary">View Rackets</a>
+                    </div>
+
+                    <div class="trust-badges">
+                        <div class="trust-badge">
+                            <span>✓</span>
+                            <div><strong>Pre-Order Only</strong><small>14-21 Days Delivery</small></div>
+                        </div>
+                        <div class="trust-badge">
+                            <span>💵</span>
+                            <div><strong>Cash on Delivery</strong><small>Pay when you receive</small></div>
+                        </div>
+                        <div class="trust-badge">
+                            <span>📱</span>
+                            <div><strong>Mobile Money</strong><small>Airtel, MTN, Zamtel</small></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="racket-showcase">
+                        <div class="floating-badge">NEW 2026</div>
+                        <img src="Img/PalaBabolatViper3.02026JuanLebron_1.png" alt="Featured Racket" class="hero-racket">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Featured Pre-Order Products</h2>
+            <p class="section-subtitle">Premium selection from world-class brands</p>
+            
+            <div class="products-grid" id="featuredProducts">
+                <!-- Products loaded via JS -->
+            </div>
+
+            <div class="text-center mt-2">
+                <a href="shop.html" class="btn btn-secondary">View All Products</a>
+            </div>
+        </section>
+
+        <section class="section" style="background: linear-gradient(to bottom, transparent, rgba(37,99,84,0.05));">
+            <h2 class="section-title">Shop by Brand</h2>
+            
+            <div class="brands-grid">
+                <div class="brand-card" onclick="window.location.href='shop.html?brand=NOX'">
+                    <div class="brand-logo">NOX</div>
+                    <div class="brand-origin">Spanish Professional</div>
+                    <div class="brand-desc">7 rackets available</div>
+                </div>
+                <div class="brand-card" onclick="window.location.href='shop.html?brand=Adidas'">
+                    <div class="brand-logo">Adidas</div>
+                    <div class="brand-origin">German Engineering</div>
+                    <div class="brand-desc">10 rackets available</div>
+                </div>
+                <div class="brand-card" onclick="window.location.href='shop.html?brand=Babolat'">
+                    <div class="brand-logo">Babolat</div>
+                    <div class="brand-origin">French Legacy</div>
+                    <div class="brand-desc">7 rackets available</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Categories</h2>
+            <div class="categories-grid-large">
+                <div class="category-card-large" onclick="window.location.href='rackets.html'">
+                    <div class="category-icon">🏓</div>
+                    <h3>Padel Rackets</h3>
+                    <p>24 professional models</p>
+                </div>
+                <div class="category-card-large" onclick="window.location.href='balls.html'">
+                    <div class="category-icon">🎾</div>
+                    <h3>Padel Balls</h3>
+                    <p>Tournament grade</p>
+                </div>
+                <div class="category-card-large" onclick="window.location.href='bags.html'">
+                    <div class="category-icon">🎒</div>
+                    <h3>Bags</h3>
+                    <p>Professional storage</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ZEDPADEL GEAR</h3>
+                <p>Email: zedpadelgear@gmail.com<br>
+                WhatsApp: +260 775 543295<br>
+                Lusaka, Zambia</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="shop.html">Shop All</a>
+                <a href="rackets.html">Rackets</a>
+                <a href="about.html">About</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ZEDPADEL GEAR. Pre-Order Only Store.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/260775543295" class="whatsapp-float" target="_blank">💬</a>
+
+    <script src="js/products-nox.js"></script>
+    <script src="js/products-adidas.js"></script>
+    <script src="js/products-babolat.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

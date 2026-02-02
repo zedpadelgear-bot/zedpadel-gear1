@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | ZEDPADEL GEAR</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="preorder-banner">⚠️ CHECKOUT - Review Your Pre-Order</div>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">ZEDPADEL <span>GEAR</span></a>
+            <ul class="nav-links">
+                <li><a href="cart.html">← Back to Cart</a></li>
+            </ul>
+            <div class="nav-icons">
+                <div class="cart-icon">
+                    🛒 <span class="cart-count" id="cartCount">0</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main style="margin-top: 140px;">
+        <section class="section">
+            <h1 class="section-title">Complete Your Pre-Order</h1>
+            
+            <div class="checkout-grid">
+                <div>
+                    <div class="form-card">
+                        <h3>👤 Contact Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Full Name *</label>
+                                <input type="text" id="fullName" placeholder="John Banda" required>
+                            </div>
+                            <div class="form-group">
+                                <label>WhatsApp Number *</label>
+                                <input type="tel" id="phone" placeholder="+260 775 543295" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" id="email" placeholder="you@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-card">
+                        <h3>📍 Delivery Address</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>City/Town *</label>
+                                <input type="text" id="city" placeholder="Lusaka" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Area/Suburb *</label>
+                                <input type="text" id="area" placeholder="Kabulonga" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Street Address *</label>
+                            <textarea id="address" rows="3" placeholder="Plot 123, Great East Road..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Delivery Instructions (Optional)</label>
+                            <textarea id="instructions" rows="2" placeholder="Gate code, landmarks..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-card">
+                        <h3>💳 Select Payment Method</h3>
+                        
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="cod" checked>
+                            <div class="payment-content">
+                                <span style="font-size: 1.5rem;">💵</span>
+                                <div>
+                                    <strong>Cash on Delivery</strong>
+                                    <small style="color: var(--text-gray); display: block;">Pay when you receive</small>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="airtel">
+                            <div class="payment-content">
+                                <span style="font-size: 1.5rem;">📱</span>
+                                <div>
+                                    <strong>Airtel Money</strong>
+                                    <small style="color: var(--text-gray); display: block;">Send to: 0775543295</small>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="mtn">
+                            <div class="payment-content">
+                                <span style="font-size: 1.5rem;">📲</span>
+                                <div>
+                                    <strong>MTN Mobile Money</strong>
+                                    <small style="color: var(--text-gray); display: block;">Send to: 0775543295</small>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="zamtel">
+                            <div class="payment-content">
+                                <span style="font-size: 1.5rem;">💳</span>
+                                <div>
+                                    <strong>Zamtel Kwacha</strong>
+                                    <small style="color: var(--text-gray); display: block;">Send to: 0775543295</small>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="order-summary">
+                        <h3>🛒 Order Summary</h3>
+                        <div id="checkoutItems" style="margin-bottom: 1rem; max-height: 300px; overflow-y: auto;">
+                            <!-- Items loaded via JS -->
+                        </div>
+                        
+                        <div style="border-top: 2px solid var(--border-color); padding-top: 1rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: var(--text-gray);">
+                                <span>Subtotal</span>
+                                <span id="checkoutSubtotal">ZMW 0</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: var(--text-gray);">
+                                <span>Delivery</span>
+                                <span style="color: var(--primary-green);">FREE (Lusaka)</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: bold; margin-top: 1rem;">
+                                <span>TOTAL</span>
+                                <span id="checkoutTotal" style="color: var(--primary-green);">ZMW 0</span>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary" onclick="sendWhatsAppOrder()" style="width: 100%; margin-top: 1.5rem; padding: 1.2rem; font-size: 1.1rem;">
+                            📲 Confirm Order via WhatsApp
+                        </button>
+                        
+                        <p style="text-align: center; margin-top: 1rem; font-size: 0.85rem; color: var(--text-gray);">
+                            Your order details will open in WhatsApp. Just send the message to confirm!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ZEDPADEL GEAR</h3>
+                <p>📱 WhatsApp: +260 775 543295</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/products-nox.js"></script>
+    <script src="js/products-adidas.js"></script>
+    <script src="js/products-babolat.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        function loadCheckoutSummary() {
+            const cart = JSON.parse(localStorage.getItem('zedCart')) || [];
+            const container = document.getElementById('checkoutItems');
+            let total = 0;
+            
+            if (cart.length === 0) {
+                window.location.href = 'cart.html';
+                return;
+            }
+            
+            container.innerHTML = cart.map(item => {
+                const product = window.products.find(p => p.id === item.id);
+                if (!product) return '';
+                
+                const itemTotal = product.price * item.quantity;
+                total += itemTotal;
+                
+                return `
+                    <div style="display: flex; gap: 1rem; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+                        <img src="${product.image}" style="width: 60px; height: 60px; object-fit: contain; background: #2a2a2a; border-radius: 4px;" onerror="this.style.display='none'">
+                        <div style="flex: 1;">
+                            <div style="font-weight: 600; font-size: 0.9rem;">${product.name}</div>
+                            <div style="color: var(--text-gray); font-size: 0.8rem;">${product.brand} • Qty: ${item.quantity}</div>
+                            <div style="color: var(--primary-green); font-weight: 600;">ZMW ${itemTotal.toLocaleString()}</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            document.getElementById('checkoutSubtotal').textContent = `ZMW ${total.toLocaleString()}`;
+            document.getElementById('checkoutTotal').textContent = `ZMW ${total.toLocaleString()}`;
+            document.getElementById('cartCount').textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+        }
+
+        function sendWhatsAppOrder() {
+            const name = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const city = document.getElementById('city').value;
+            const area = document.getElementById('area').value;
+            const address = document.getElementById('address').value;
+            const instructions = document.getElementById('instructions').value;
+            
+            if (!name || !email || !phone || !city || !area || !address) {
+                alert('⚠️ Please fill in all required fields marked with *');
+                return;
+            }
+            
+            const cart = JSON.parse(localStorage.getItem('zedCart')) || [];
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            
+            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+            const paymentText = {
+                'cod': '💵 Cash on Delivery',
+                'airtel': '📱 Airtel Money (0775543295)',
+                'mtn': '📲 MTN MoMo (0775543295)',
+                'zamtel': '💳 Zamtel Kwacha (0775543295)'
+            }[paymentMethod];
+            
+            let total = 0;
+            let itemsList = '';
+            
+            cart.forEach(item => {
+                const product = window.products.find(p => p.id === item.id);
+                if (product) {
+                    const itemTotal = product.price * item.quantity;
+                    total += itemTotal;
+                    itemsList += `\n• ${product.name}\n  ${product.brand} | Qty: ${item.quantity} | ZMW ${itemTotal.toLocaleString()}\n`;
+                }
+            });
+            
+            const orderId = 'ZED-' + Date.now().toString().slice(-6);
+            
+            let message = `🛒 *NEW ORDER - ZEDPADEL GEAR*\n\n`;
+            message += `*Order #:* ${orderId}\n\n`;
+            message += `*👤 Customer Details:*\n`;
+            message += `Name: ${name}\n`;
+            message += `Phone: ${phone}\n`;
+            message += `Email: ${email}\n\n`;
+            message += `*📍 Delivery Address:*\n`;
+            message += `${address}\n`;
+            message += `${area}, ${city}\n`;
+            if (instructions) message += `Instructions: ${instructions}\n`;
+            message += `\n*💳 Payment Method:*\n${paymentText}\n`;
+            message += `\n*🎾 Order Items:*${itemsList}\n`;
+            message += `*💰 TOTAL: ZMW ${total.toLocaleString()}*\n\n`;
+            message += `Please confirm this order. Delivery: 14-21 days.`;
+            
+            // Save order
+            const order = {
+                id: orderId,
+                date: new Date().toLocaleString(),
+                customer: name,
+                phone: phone,
+                email: email,
+                address: `${address}, ${area}, ${city}`,
+                payment: paymentText,
+                total: total,
+                items: cart,
+                status: 'Pending'
+            };
+            
+            let orders = JSON.parse(localStorage.getItem('zedOrders')) || [];
+            orders.push(order);
+            localStorage.setItem('zedOrders', JSON.stringify(orders));
+            
+            // Open WhatsApp
+            const whatsappLink = `https://wa.me/260775543295?text=${encodeURIComponent(message)}`;
+            window.open(whatsappLink, '_blank');
+            
+            // Clear cart
+            localStorage.removeItem('zedCart');
+            updateCartCount();
+            
+            alert(`✅ Order #${orderId} created!\n\nWhatsApp will open with your order details. Please send the message to confirm.`);
+            
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 2000);
+        }
+
+        document.addEventListener('DOMContentLoaded', loadCheckoutSummary);
+    </script>
+</body>
+</html>

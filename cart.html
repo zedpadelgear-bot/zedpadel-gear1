@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart | ZEDPADEL GEAR - Zambia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="preorder-banner">⚠️ ALL ITEMS IN CART ARE PRE-ORDER ONLY</div>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">ZEDPADEL <span>GEAR</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Continue Shopping</a></li>
+            </ul>
+            <div class="nav-icons">
+                <div class="cart-icon">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main style="margin-top: 140px;">
+        <section class="cart-container">
+            <h1 class="page-title">Your Pre-Order Cart</h1>
+            
+            <div class="cart-alert">
+                <span class="alert-icon">⚠️</span>
+                <div>
+                    <strong>Important Reminder:</strong> All items are PRE-ORDER ONLY with 14-21 days delivery time. 
+                    Payment methods: Cash on Delivery or Mobile Money (Airtel/MTN/Zamtel).
+                </div>
+            </div>
+
+            <div class="cart-layout">
+                <div class="cart-items-container" id="cartItems">
+                    <!-- Cart items loaded dynamically -->
+                </div>
+
+                <div class="cart-sidebar">
+                    <div class="cart-summary" id="cartSummary" style="display: none;">
+                        <h3>Order Summary</h3>
+                        
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="subtotal">ZMW 0</span>
+                        </div>
+                        
+                        <div class="summary-row">
+                            <span>Delivery Fee</span>
+                            <span style="color: var(--primary-green);">Free (Lusaka)</span>
+                        </div>
+                        
+                        <div class="summary-row total">
+                            <span>Total Amount</span>
+                            <span id="totalAmount">ZMW 0</span>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-checkout" onclick="window.location.href='checkout.html'">
+                            Proceed to Checkout
+                        </button>
+                        
+                        <p class="secure-note">🔒 Secure checkout • No card required</p>
+                    </div>
+
+                    <div class="cart-help">
+                        <h4>Need Help?</h4>
+                        <p>📱 WhatsApp: +260 775 543295</p>
+                        <p>📧 Email: zedpadelgear@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="emptyCart" class="empty-cart" style="display: none;">
+                <div class="empty-cart-icon">🛒</div>
+                <h2>Your cart is empty</h2>
+                <p>Looks like you haven't added any pre-order items yet.</p>
+                <a href="shop.html" class="btn btn-primary">Start Shopping</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ZEDPADEL GEAR</h3>
+                <p>Zambia's premier padel equipment store</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ZEDPADEL GEAR. Pre-Order Only Store.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/260775543295" class="whatsapp-float" target="_blank">💬</a>
+
+    <script src="js/products-nox.js"></script>
+    <script src="js/products-adidas.js"></script>
+    <script src="js/products-babolat.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        function renderCart() {
+            const cart = JSON.parse(localStorage.getItem('zedCart')) || [];
+            const container = document.getElementById('cartItems');
+            const summary = document.getElementById('cartSummary');
+            const empty = document.getElementById('emptyCart');
+            
+            if (cart.length === 0) {
+                container.innerHTML = '';
+                summary.style.display = 'none';
+                empty.style.display = 'block';
+                return;
+            }
+            
+            empty.style.display = 'none';
+            summary.style.display = 'block';
+            
+            let total = 0;
+            let itemCount = 0;
+            
+            container.innerHTML = cart.map(item => {
+                const product = window.products.find(p => p.id === item.id);
+                if (!product) return '';
+                
+                const itemTotal = product.price * item.quantity;
+                total += itemTotal;
+                itemCount += item.quantity;
+                
+                return `
+                    <div class="cart-item-row">
+                        <div class="cart-item-image">
+                            <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/100x100/1a1a1a/666?text=ZED'">
+                        </div>
+                        <div class="cart-item-details">
+                            <div class="cart-item-brand">${product.brand}</div>
+                            <div class="cart-item-name">${product.name}</div>
+                            <div class="cart-item-price">ZMW ${product.price.toLocaleString()} each</div>
+                            <div class="preorder-tag-cart">Pre-Order Item</div>
+                        </div>
+                        <div class="cart-item-controls">
+                            <div class="quantity-control-cart">
+                                <button class="qty-btn" onclick="updateCartQuantity(${item.id}, -1)">-</button>
+                                <span class="qty-value">${item.quantity}</span>
+                                <button class="qty-btn" onclick="updateCartQuantity(${item.id}, 1)">+</button>
+                            </div>
+                            <div class="cart-item-total">
+                                ZMW ${itemTotal.toLocaleString()}
+                            </div>
+                            <button class="remove-btn-cart" onclick="removeCartItem(${item.id})" title="Remove item">
+                                🗑️ Remove
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            document.getElementById('subtotal').textContent = `ZMW ${total.toLocaleString()}`;
+            document.getElementById('totalAmount').textContent = `ZMW ${total.toLocaleString()}`;
+            document.getElementById('cartCount').textContent = itemCount;
+        }
+
+        document.addEventListener('DOMContentLoaded', renderCart);
+    </script>
+</body>
+</html>

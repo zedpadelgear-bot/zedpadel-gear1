@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessories | ZEDPADEL GEAR - Zambia</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="preorder-banner">⚠️ ALL ACCESSORIES ARE PRE-ORDER ONLY | Delivery 14-21 days</div>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">ZEDPADEL <span>GEAR</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="categories.html">Categories</a></li>
+            </ul>
+            <div class="nav-icons">
+                <div class="cart-icon" onclick="window.location.href='cart.html'">
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <div class="mobile-menu" id="mobileMenu">☰</div>
+            </div>
+        </nav>
+    </header>
+
+    <main style="margin-top: 140px;">
+        <section class="section">
+            <h1 class="section-title">Accessories</h1>
+            <p class="section-subtitle">Grips, overgrips, and essential gear</p>
+
+            <div class="sub-categories" style="margin-bottom: 3rem;">
+                <div class="sub-cat-card">
+                    <span class="sub-cat-icon">🤲</span>
+                    <h4>Grips & Overgrips</h4>
+                </div>
+                <div class="sub-cat-card">
+                    <span class="sub-cat-icon">⌚</span>
+                    <h4>Wristbands</h4>
+                </div>
+                <div class="sub-cat-card">
+                    <span class="sub-cat-icon">🧴</span>
+                    <h4>Maintenance</h4>
+                </div>
+            </div>
+
+            <div class="pro-tip-box" style="background: rgba(230, 150, 40, 0.1); border-left: 4px solid var(--accent-yellow); padding: 2rem; margin-bottom: 3rem; border-radius: 0 8px 8px 0;">
+                <h4 style="color: var(--accent-yellow); margin-bottom: 1rem;">💡 Pro Tip: When to Replace Your Grip</h4>
+                <p style="color: var(--text-gray);">Replace your overgrip every 5-10 matches, or when you notice reduced tackiness. A fresh grip prevents blisters and ensures optimal racket control. In Zambia's climate, consider absorbent overgrips for humid conditions.</p>
+            </div>
+
+            <div class="products-grid" id="accessoriesGrid"></div>
+            
+            <div id="noResults" class="no-results" style="display: none;">
+                <h3>Coming Soon</h3>
+                <p>Accessories will be available shortly. Contact us for specific grip and accessory orders.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ZEDPADEL GEAR</h3>
+                <p>Email: zedpadelgear@gmail.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/260775543295" class="whatsapp-float" target="_blank">💬</a>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('accessoriesGrid');
+            const accessories = products.filter(p => p.category === 'accessories');
+            
+            if (accessories.length === 0) {
+                document.getElementById('noResults').style.display = 'block';
+            } else {
+                grid.innerHTML = accessories.map(p => createProductCard(p)).join('');
+            }
+            updateCartCount();
+            
+            document.getElementById('mobileMenu').addEventListener('click', () => {
+                document.getElementById('navLinks').classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

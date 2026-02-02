@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | ZEDPADEL GEAR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="preorder-banner">⚠️ PRE-ORDER ONLY</div>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">ZEDPADEL <span>GEAR</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+            <div class="nav-icons">
+                <div class="cart-icon" onclick="window.location.href='cart.html'" style="cursor: pointer;">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <div class="mobile-menu" id="mobileMenu">☰</div>
+            </div>
+        </nav>
+    </header>
+
+    <main style="margin-top: 140px;">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> / <a href="shop.html">Shop</a> / <span id="breadcrumbProduct">Product</span>
+        </div>
+
+        <div class="product-detail-container" id="productDetail">
+            <!-- Product details loaded dynamically -->
+        </div>
+
+        <section class="section" style="border-top: 1px solid var(--border-color); margin-top: 4rem; padding-top: 4rem;">
+            <h2 class="section-title">You May Also Like</h2>
+            <div class="products-grid" id="relatedProducts"></div>
+        </section>
+    </main>
+
+    <a href="https://wa.me/260775543295" class="whatsapp-float" target="_blank">💬</a>
+
+    <script src="js/products-nox.js"></script>
+    <script src="js/products-adidas.js"></script>
+    <script src="js/products-babolat.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        let currentQty = 1;
+        let currentProduct = null;
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartCount();
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = parseInt(urlParams.get('id'));
+            
+            if (!productId || !window.products) {
+                document.getElementById('productDetail').innerHTML = '<div style="text-align: center; padding: 4rem;"><h2>Product Not Found</h2></div>';
+                return;
+            }
+            
+            currentProduct = window.products.find(p => p.id === productId);
+            
+            if (!currentProduct) {
+                document.getElementById('productDetail').innerHTML = '<div style="text-align: center; padding: 4rem;"><h2>Product Not Found</h2></div>';
+                return;
+            }
+            
+            document.getElementById('breadcrumbProduct').textContent = currentProduct.name;
+            
+            const savings = (currentProduct.originalPrice || 0) - currentProduct.price;
+            const savingsPercent = currentProduct.originalPrice ? Math.round((savings / currentProduct.originalPrice) * 100) : 0;
+            
+            document.getElementById('productDetail').innerHTML = `
+                <div class="product-gallery">
+                    <div class="detail-preorder-badge">Pre-Order Only</div>
+                    <img src="${currentProduct.image}" alt="${currentProduct.name}" class="main-product-image" 
+                         onerror="this.src='https://via.placeholder.com/600x600/1a1a1a/666?text=ZEDPADEL'">
+                </div>
+                
+                <div class="product-info-detailed">
+                    <div class="product-brand-large">${currentProduct.brand}</div>
+                    <h1 class="product-title-large">${currentProduct.name}</h1>
+                    
+                    <div class="price-container">
+                        <div class="current-price-large">ZMW ${currentProduct.price.toLocaleString()}</div>
+                        ${currentProduct.originalPrice ? `
+                            <div class="original-price-large">ZMW ${currentProduct.originalPrice.toLocaleString()}</div>
+                            <div class="savings-badge">Save ${savingsPercent}%</div>
+                        ` : ''}
+                    </div>
+                    
+                    <div class="pricing-note">
+                        <span>ℹ️</span>
+                        <div>
+                            <strong>Pre-Order Pricing:</strong> Indian/EU MRP + Import & Logistics cost, converted to ZMW
+                        </div>
+                    </div>
+
+                    <div class="notice-box">
+                        <strong>⚠️ Pre-Order Item</strong>
+                        <p>This item is available by pre-order only. Estimated delivery: <strong>14-21 days</strong> after order confirmation.</p>
+                    </div>
+
+                    <div class="product-description-full">
+                        <h3>Product Description</h3>
+                        <p>${currentProduct.description}</p>
+                    </div>
+                    
+                    <div class="quantity-selector">
+                        <label>Quantity:</label>
+                        <div class="quantity-control-large">
+                            <button class="qty-btn" onclick="updateQuantity(-1)">-</button>
+                            <input type="number" id="quantity" value="1" min="1" max="5" readonly>
+                            <button class="qty-btn" onclick="updateQuantity(1)">+</button>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-large" onclick="addToCartWithQty()">
+                        Add to Pre-Order Cart - ZMW ${currentProduct.price.toLocaleString()}
+                    </button>
+                </div>
+            `;
+
+            // Load related products
+            const related = window.products.filter(p => 
+                (p.brand === currentProduct.brand || p.category === currentProduct.category) && p.id !== currentProduct.id
+            ).slice(0, 4);
+            
+            document.getElementById('relatedProducts').innerHTML = related.map(p => createProductCard(p)).join('');
+            
+            // Mobile menu
+            document.getElementById('mobileMenu').addEventListener('click', () => {
+                document.getElementById('navLinks').classList.toggle('active');
+            });
+        });
+        
+        function updateQuantity(change) {
+            currentQty += change;
+            if (currentQty < 1) currentQty = 1;
+            if (currentQty > 5) currentQty = 5;
+            document.getElementById('quantity').value = currentQty;
+        }
+        
+        function addToCartWithQty() {
+            if (!currentProduct) return;
+            
+            let cart = JSON.parse(localStorage.getItem('zedCart')) || [];
+            const existingItem = cart.find(item => item.id === currentProduct.id);
+            
+            if (existingItem) {
+                existingItem.quantity += currentQty;
+            } else {
+                cart.push({ id: currentProduct.id, quantity: currentQty });
+            }
+            
+            localStorage.setItem('zedCart', JSON.stringify(cart));
+            updateCartCount();
+            
+            const btn = event.target;
+            btn.textContent = `✓ Added ${currentQty} to cart!`;
+            btn.style.background = '#E69628';
+            btn.style.color = 'black';
+            
+            setTimeout(() => {
+                btn.textContent = `Add to Pre-Order Cart - ZMW ${currentProduct.price.toLocaleString()}`;
+                btn.style.background = '#256354';
+                btn.style.color = 'white';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

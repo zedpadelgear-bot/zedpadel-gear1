@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padel Balls | ZEDPADEL GEAR - Zambia</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="preorder-banner">⚠️ ALL PRODUCTS ARE PRE-ORDER ONLY | Delivery 14-21 days</div>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">ZEDPADEL <span>GEAR</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <div class="cart-icon" onclick="window.location.href='cart.html'" style="cursor: pointer;">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <div class="mobile-menu" id="mobileMenu">☰</div>
+            </div>
+        </nav>
+    </header>
+
+    <main style="margin-top: 140px;">
+        <section class="section">
+            <h1 class="section-title">Padel Balls</h1>
+            <p class="section-subtitle">Tournament-grade balls for consistent play</p>
+
+            <div class="products-grid" id="ballsGrid"></div>
+            
+            <div id="noResults" class="no-results show">
+                <h3>Coming Soon</h3>
+                <p>Padel balls will be available shortly. Contact us to pre-order specific brands.</p>
+                <a href="contact.html" class="btn btn-primary">Contact Us</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ZEDPADEL GEAR</h3>
+                <p>Email: zedpadelgear@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ZEDPADEL GEAR. Pre-Order Only Store.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/260775543295" class="whatsapp-float" target="_blank">💬</a>
+
+    <script src="js/products-nox.js"></script>
+    <script src="js/products-adidas.js"></script>
+    <script src="js/products-babolat.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('ballsGrid');
+            const balls = window.products.filter(p => p.category === 'balls');
+            
+            if (balls.length === 0) {
+                document.getElementById('noResults').classList.add('show');
+            } else {
+                document.getElementById('noResults').style.display = 'none';
+                grid.innerHTML = balls.map(p => createProductCard(p)).join('');
+            }
+            updateCartCount();
+            
+            document.getElementById('mobileMenu').addEventListener('click', () => {
+                document.getElementById('navLinks').classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

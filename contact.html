@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | ZEDPADEL GEAR - Zambia</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="preorder-banner">
+        ⚠️ PRE-ORDER ONLY | Questions? Contact us on WhatsApp +260 775 543295
+    </div>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">ZEDPADEL <span>GEAR</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <div class="cart-icon" onclick="window.location.href='cart.html'" style="cursor: pointer;">
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <div class="mobile-menu" id="mobileMenu">☰</div>
+            </div>
+        </nav>
+    </header>
+
+    <main style="margin-top: 140px;">
+        <section class="section">
+            <h1 class="section-title">Get In Touch</h1>
+            <p class="section-subtitle">We're here to help with your pre-order inquiries</p>
+
+            <div class="contact-grid">
+                <div class="contact-info-section">
+                    <div class="contact-card">
+                        <div class="contact-icon-large">📧</div>
+                        <div>
+                            <h4>Email Us</h4>
+                            <p>zedpadelgear@gmail.com</p>
+                            <small>We respond within 24 hours</small>
+                        </div>
+                    </div>
+
+                    <div class="contact-card highlight">
+                        <div class="contact-icon-large">📱</div>
+                        <div>
+                            <h4>WhatsApp (Fastest)</h4>
+                            <p>+260 775 543295</p>
+                            <small>Usually replies within 1 hour</small>
+                            <a href="https://wa.me/260775543295" class="btn btn-primary" style="margin-top: 1rem; display: inline-block;">Chat on WhatsApp</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon-large">📍</div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Lusaka, Zambia</p>
+                            <small>Free delivery within Lusaka city limits</small>
+                        </div>
+                    </div>
+
+                    <div class="hours-card">
+                        <h4>Working Hours</h4>
+                        <p>Monday - Friday: 08:00 - 18:00</p>
+                        <p>Saturday: 09:00 - 15:00</p>
+                        <p>Sunday: Closed (WhatsApp support only)</p>
+                    </div>
+                </div>
+
+                <div class="contact-form-section">
+                    <div class="form-card">
+                        <h3>Send us a Message</h3>
+                        <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                            <div class="form-group">
+                                <label>Your Name</label>
+                                <input type="text" id="contactName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" id="contactEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel" id="contactPhone">
+                            </div>
+                            <div class="form-group">
+                                <label>Message</label>
+                                <textarea id="contactMessage" rows="5" required placeholder="Tell us about your inquiry..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ZEDPADEL GEAR</h3>
+                <p>Email: zedpadelgear@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ZEDPADEL GEAR. Pre-Order Only Store.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/260775543295" class="whatsapp-float" target="_blank">💬</a>
+
+    <script src="js/products-nox.js"></script>
+    <script src="js/products-adidas.js"></script>
+    <script src="js/products-babolat.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('contactName').value;
+            
+            // Create WhatsApp message
+            const message = `Hello ZEDPADEL GEAR,\n\nMy name is ${name}.\n\n${document.getElementById('contactMessage').value}\n\nPlease contact me at: ${document.getElementById('contactPhone').value || 'N/A'}\nEmail: ${document.getElementById('contactEmail').value}`;
+            
+            window.open(`https://wa.me/260775543295?text=${encodeURIComponent(message)}`, '_blank');
+            
+            alert(`Thank you ${name}! Redirecting you to WhatsApp to send your message.`);
+            e.target.reset();
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartCount();
+            document.getElementById('mobileMenu').addEventListener('click', () => {
+                document.getElementById('navLinks').classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

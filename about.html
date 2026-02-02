@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | ZEDPADEL GEAR - Zambia</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="preorder-banner">
+        ⚠️ PRE-ORDER ONLY STORE | ZAMBIA'S PREMIUM PADEL DESTINATION
+    </div>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">ZEDPADEL <span>GEAR</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <div class="cart-icon" onclick="window.location.href='cart.html'" style="cursor: pointer;">
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <div class="mobile-menu" id="mobileMenu">☰</div>
+            </div>
+        </nav>
+    </header>
+
+    <main style="margin-top: 140px;">
+        <section class="section">
+            <div class="about-container">
+                <h1 class="section-title">Our Story</h1>
+                <p class="lead-text">Bringing world-class padel equipment to Zambia</p>
+
+                <div class="story-card">
+                    <h3 style="color: var(--accent-yellow); margin-bottom: 1rem;">The Passion Behind the Game</h3>
+                    <p>ZEDPADEL GEAR was founded with a simple mission: to make premium padel equipment accessible to every player in Zambia. We recognized that while the sport was growing rapidly across the country, access to professional-grade rackets, balls, and accessories was limited.</p>
+                    
+                    <p>We are not just retailers; we are padel enthusiasts. We understand the difference that quality gear makes on the court. That's why we partner directly with official distributors of the world's leading brands including Babolat, NOX, and Adidas to bring you authentic equipment.</p>
+                    
+                    <p>Based in Lusaka, we serve padel players nationwide through our pre-order model, ensuring you get the latest models at competitive prices.</p>
+                </div>
+
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">🎯</div>
+                        <h4>Our Mission</h4>
+                        <p>To elevate the standard of padel in Zambia by providing access to professional equipment.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">💎</div>
+                        <h4>Quality First</h4>
+                        <p>Only authentic products from authorized distributors. No counterfeits, no compromises.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🤝</div>
+                        <h4>Trusted Service</h4>
+                        <p>Reliable delivery, transparent pricing, and dedicated WhatsApp support.</p>
+                    </div>
+                </div>
+
+                <div class="why-preorder">
+                    <h3 style="margin-bottom: 1rem;">Why Pre-Order?</h3>
+                    <p>Our pre-order model allows us to offer you the latest products at the best prices without holding expensive inventory. This keeps costs down for you while ensuring every item is fresh stock, straight from the manufacturer. We commit to 14-21 day delivery windows and keep you updated every step of the way via WhatsApp.</p>
+                </div>
+
+                <div class="pricing-explained">
+                    <h3 style="margin-bottom: 1rem;">Our Pricing Policy</h3>
+                    <p>We believe in complete transparency. Our prices are calculated as follows:</p>
+                    <ul style="margin: 1rem 0; padding-left: 2rem; color: var(--text-gray);">
+                        <li>Indian/EU MRP (Manufacturer's Retail Price)</li>
+                        <li>Plus Import & Logistics cost</li>
+                        <li>Converted to ZMW at current exchange rates</li>
+                    </ul>
+                    <p>This ensures you get the best possible price while covering our import and operational costs.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ZEDPADEL GEAR</h3>
+                <p>Email: zedpadelgear@gmail.com<br>WhatsApp: +260 775 543295</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ZEDPADEL GEAR. Pre-Order Only Store.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/260775543295" class="whatsapp-float" target="_blank">💬</a>
+
+    <script src="js/products-nox.js"></script>
+    <script src="js/products-adidas.js"></script>
+    <script src="js/products-babolat.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartCount();
+            document.getElementById('mobileMenu').addEventListener('click', () => {
+                document.getElementById('navLinks').classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
